@@ -5,8 +5,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      spells: []
+      spells: [],
+      filteredSpells: []
     }
+
+    this.filteredSpellList = this.filteredSpellList.bind(this)
   }
   componentDidMount() {
     fetch('http://localhost:3000/spells', {
@@ -17,23 +20,42 @@ class App extends Component {
     }).then(response => response.json())
     .then(spells => this.setState({
       spells,
+      filteredSpells: spells
     }))
+
+  }
+
+  filteredSpellList(e) {
+    const filteredSpells = this.state.spells.filter(spell => {
+      if (spell.name.toLowerCase().indexOf(e.target.value) === 0) {
+        return spell
+      }
+    })
+    setTimeout(this.setState({
+      filteredSpells,
+    }), 100)
+
   }
   render() {
-    const spellResults = this.state.spells.map((spell, idx) => {
-      return <li key={idx}>{spell.name}</li>
-    })
     return (
       <div className="App">
         <h1>Spellbook!</h1>
 
         <form>
-          <input type='search' placeholder='Search Spells'></input>
+          <input
+            onChange={this.filteredSpellList}
+            type='search'
+            placeholder='Search Spells'
+          />
           <button type='submit'>Search</button>
         </form>
 
         <ul>
-          {spellResults}
+          {
+            this.state.filteredSpells.map((spell, idx) => {
+              return <li key={idx}>{spell.name}</li>
+            })
+          }
         </ul>
       </div>
     );

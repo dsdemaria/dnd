@@ -4,9 +4,7 @@ import { Panel, ListGroup, ListGroupItem, Label } from 'react-bootstrap';
 export default class SpellDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: false
-    }
+    this.state = { open: false }
   }
   render() {
     const { spell } = this.props
@@ -19,13 +17,18 @@ export default class SpellDetails extends Component {
       >
         <ListGroup fill>
           <ListGroupItem>
-            <Label bsStyle="primary">{spell.level} {spell.school}</Label>
+            <Label bsStyle="primary">{spell.level} {spell.school}</Label>&nbsp;
+            <Label bsStyle="info">Class: {spell.class}</Label>&nbsp;
+            <Label bsStyle="primary">Duration: {spell.duration} | Range: {spell.range}</Label>
           </ListGroupItem>
-          <ListGroupItem>Class: {spell.class} | Duration: {spell.duration} | Range: {spell.range}</ListGroupItem>
           <ListGroupItem>
-            <Label bsStyle='primary'>Components: {spell.components}</Label>&nbsp;
-            <Label bsStyle="info">{ spell.material && <span>Material: {spell.material}</span> }</Label> Ritual: {spell.ritual} | Concentration: {spell.concentration}</ListGroupItem>&nbsp;
-          <ListGroupItem ><span className='text-left' dangerouslySetInnerHTML={{ __html: spell.desc }}></span></ListGroupItem>
+            <Label bsStyle='info'>Components: {spell.components}</Label>&nbsp;
+            <Label bsStyle="primary">{ spell.material && <span>Material: {spell.material}</span> }</Label>&nbsp;
+            <Label bsStyle='info'>Ritual: {spell.ritual} | Concentration: {spell.concentration}</Label>
+          </ListGroupItem>
+          <ListGroupItem>
+            <span className='text-left' dangerouslySetInnerHTML={{ __html: spell.desc }}></span>
+          </ListGroupItem>
         </ListGroup>
 
       </Panel>

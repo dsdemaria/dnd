@@ -14,17 +14,13 @@ class App extends Component {
     this.filteredSpellList = this.filteredSpellList.bind(this)
   }
   componentDidMount() {
-    fetch('http://localhost:3000/spells', {
-    	method: 'GET',
-      headers: new Headers({
-        'Content-Type': 'text/plain'
+    fetch('http://localhost:3000/spells')
+      .then(response => response.json())
+      .then(spells => this.setState({
+        spells,
+        filteredSpells: spells
       })
-    }).then(response => response.json())
-    .then(spells => this.setState({
-      spells,
-      filteredSpells: spells
-    }))
-
+    )
   }
 
   filteredSpellList(e) {
@@ -55,7 +51,7 @@ class App extends Component {
             <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
               <Accordion>
                 {this.state.filteredSpells.map((spell, idx) =>
-                    <SpellDetails key={idx} spell={spell} />)}
+                  <SpellDetails key={idx} spell={spell} />)}
               </Accordion>
             </Col>
           </Row>

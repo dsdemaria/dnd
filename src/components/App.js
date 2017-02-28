@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Accordion } from 'react-bootstrap';
+import SpellSearch from './SpellSearch';
+import SpellDetails from './SpellDetails';
 import './App.css';
 
 class App extends Component {
@@ -41,22 +44,19 @@ class App extends Component {
       <div className="App">
         <h1>Spellbook!</h1>
 
-        <form>
-          <input
-            onChange={this.filteredSpellList}
-            type='search'
-            placeholder='Search Spells'
-          />
-          <button type='submit'>Search</button>
-        </form>
+        <SpellSearch
+          spells={this.state.spells}
+          filteredSpells={this.state.filteredSpells}
+          filteredSpellList={this.filteredSpellList}
+        />
 
-        <ul>
+        <Accordion>
           {
             this.state.filteredSpells.map((spell, idx) => {
-              return <li key={idx}>{spell.name}</li>
+              return <SpellDetails key={idx} spell={spell} />
             })
           }
-        </ul>
+        </Accordion>
       </div>
     );
   }

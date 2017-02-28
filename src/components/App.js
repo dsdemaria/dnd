@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Grid, Row, Col } from 'react-bootstrap';
 import SpellSearch from './SpellSearch';
 import SpellDetails from './SpellDetails';
 import './App.css';
@@ -11,7 +11,6 @@ class App extends Component {
       spells: [],
       filteredSpells: []
     }
-
     this.filteredSpellList = this.filteredSpellList.bind(this)
   }
   componentDidMount() {
@@ -37,26 +36,30 @@ class App extends Component {
     setTimeout(this.setState({
       filteredSpells,
     }), 100)
-
   }
   render() {
     return (
       <div className="App">
-        <h1>Spellbook!</h1>
-
-        <SpellSearch
-          spells={this.state.spells}
-          filteredSpells={this.state.filteredSpells}
-          filteredSpellList={this.filteredSpellList}
-        />
-
-        <Accordion>
-          {
-            this.state.filteredSpells.map((spell, idx) => {
-              return <SpellDetails key={idx} spell={spell} />
-            })
-          }
-        </Accordion>
+        <Grid>
+          <Row>
+            <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
+              <h1>Spellbook!</h1>
+              <SpellSearch
+                spells={this.state.spells}
+                filteredSpells={this.state.filteredSpells}
+                filteredSpellList={this.filteredSpellList}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
+              <Accordion>
+                {this.state.filteredSpells.map((spell, idx) =>
+                    <SpellDetails key={idx} spell={spell} />)}
+              </Accordion>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }

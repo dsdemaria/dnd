@@ -25,8 +25,7 @@ export default class SpellDetails extends Component {
           <ListGroupItem>
             <Label bsStyle='primary'>Components: {spell.components}</Label>&nbsp;
             <Label bsStyle="info">{ spell.material && <span>Material: {spell.material}</span> }</Label> Ritual: {spell.ritual} | Concentration: {spell.concentration}</ListGroupItem>&nbsp;
-          <ListGroupItem><span dangerouslySetInnerHTML={{ __html: spell.desc }}></span></ListGroupItem>
-          <ListGroupItem></ListGroupItem>
+          <ListGroupItem ><span className='text-left' dangerouslySetInnerHTML={{ __html: spell.desc }}></span></ListGroupItem>
         </ListGroup>
 
       </Panel>

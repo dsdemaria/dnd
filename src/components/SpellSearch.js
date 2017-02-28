@@ -10,7 +10,6 @@ const SpellSearch = ({ filteredSpellList, filteredSpells, spells}) => (
         type='search'
         placeholder='Search Spells'
       />
-      <Button bsStyle="primary">Search</Button>
     </FormGroup>
   </form>
 )

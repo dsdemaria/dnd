@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, ListGroup, ListGroupItem, Label } from 'react-bootstrap';
+import { Panel, ListGroup, ListGroupItem, Label, Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
 export default class SpellDetails extends Component {
   constructor(props) {
@@ -15,23 +15,43 @@ export default class SpellDetails extends Component {
         expanded={this.state.open}
         onClick={() => this.setState({ open: !this.state.open })}
       >
-        <ListGroup fill>
-          <ListGroupItem>
-            <Label bsStyle="primary">{spell.level} {spell.school}</Label>&nbsp;
-            <Label bsStyle="info">Class: {spell.class}</Label>&nbsp;
-            <Label bsStyle="primary">Duration: {spell.duration} | Range: {spell.range}</Label>
-          </ListGroupItem>
-          <ListGroupItem>
-            <Label bsStyle='info'>Components: {spell.components}</Label>&nbsp;
-            <Label bsStyle="primary">{ spell.material && <span>Material: {spell.material}</span> }</Label>&nbsp;
-            <Label bsStyle='info'>Ritual: {spell.ritual} | Concentration: {spell.concentration}</Label>
-          </ListGroupItem>
-          <ListGroupItem>
-            <span className='text-left' dangerouslySetInnerHTML={{ __html: spell.desc }}></span>
-          </ListGroupItem>
-        </ListGroup>
-
-      </Panel>
+      <Grid fluid>
+        <Row>
+          <Col md={6} lg={6}>
+            <dl className='dl-horizontal text-left'>
+              <dt>School</dt>
+              <dd>{spell.school}</dd>
+              <dt>Class</dt>
+              <dd>{spell.class}</dd>
+              <dt>Duration</dt>
+              <dd>{spell.duration}</dd>
+              <dt>Range</dt>
+              <dd>{spell.range}</dd>
+            </dl>
+          </Col>
+          <Col md={6} lg={6}>
+            <dl className='dl-horizontal text-left'>
+              <dt>Components</dt>
+              <dd>{spell.components}</dd>
+              {spell.material &&
+                <span>
+                  <dt>Material</dt>
+                  <dd>{spell.material}</dd>
+                </span>
+              }
+              <dt>Ritual</dt>
+              <dd>{spell.ritual}</dd>
+              <dt>Concentration</dt>
+              <dd>{spell.concentration}</dd>
+            </dl>
+          </Col>
+        </Row>
+      </Grid>
+      <dl>
+        <dt>Description</dt>
+        <dd className='text-left' dangerouslySetInnerHTML={{ __html: spell.desc }}></dd>
+      </dl>
+    </Panel>
     )
   }
 }

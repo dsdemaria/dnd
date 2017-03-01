@@ -39,7 +39,7 @@ class App extends Component {
         <Grid>
           <Row>
             <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
-              <h1>Spellbook!</h1>
+              <h1>DnD 5e Spellbook</h1>
               <SpellSearch
                 spells={this.state.spells}
                 filteredSpells={this.state.filteredSpells}

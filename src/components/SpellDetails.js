@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, ListGroup, ListGroupItem, Label, Grid, Row, Col, Clearfix } from 'react-bootstrap';
+import { Panel, Grid, Row, Col } from 'react-bootstrap';
 import ClassTags from './ClassTags';
 
 export default class SpellDetails extends Component {
@@ -21,9 +21,9 @@ export default class SpellDetails extends Component {
           <Col md={6} lg={6}>
             <dl className='dl-horizontal text-left'>
               <dt>School</dt>
-              <dd>{spell.school}</dd>
+              <dd>{spell.school} | {spell.level}</dd>
               <dt>Classes</dt>
-              <dd><ClassTags dndClasses={spell.class} /></dd>
+              <ClassTags dndClasses={spell.class} />
               <dt>Duration</dt>
               <dd>{spell.duration}</dd>
               <dt>Range</dt>

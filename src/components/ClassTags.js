@@ -1,31 +1,37 @@
 import React from 'react';
-import { classesArray, splitClassList } from './helpers.js';
+import { splitClassList } from './helpers.js';
 
-const styles = (props) => {
-  return ({
-    span: {
-      background: props.color,
-      borderRadius: '2px',
-      color: '#fbfbfb',
-      padding: '.125rem'
-    }
-  })
-}
-const faker = {
-  color: 'red'
+const styles = {
+  span: {
+    borderRadius: '.33rem',
+    color: '#fbfbfb',
+    fontSize: '1rem',
+    padding: '.5rem',
+    marginRight: '.5rem',
+    lineHeignt: '100%'
+  },
+  Bard: { background: 'OrangeRed' },
+  Cleric: { background: 'Lavender',  },
+  Druid: { background: 'DarkOliveGreen' },
+  Paladin: { background: 'Gold' },
+  Ranger: { background: 'ForestGreen' },
+  RitualCaster: { background: 'Red' },
+  Sorcerer: { background: 'RoyalBlue' },
+  Warlock: { background: 'DarkMagenta' },
+  Wizard: { background: 'Crimson' }
 }
 
 const ClassTags = ({ dndClasses }) => {
-  const classes = splitClassList(dndClasses)
-  // const classTag = dndClass => {
-  //
-  // }
-  const listOfClasses = classes.map()
+  const listOfClasses = splitClassList(dndClasses).map((dndClass, idx) => <span style={{...styles.span, ...styles[dndClass]}} key={idx}>{dndClass}</span>)
   return (
-    <ul>
-      <li>check</li>
-    </ul>
+    <dd style={{height: '2.4rem'}}>
+      {listOfClasses}
+    </dd>
   )
+}
+
+ClassTags.propTypes = {
+  dndClasses: React.PropTypes.string
 }
 
 export default ClassTags

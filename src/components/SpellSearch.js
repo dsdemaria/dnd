@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react'
-import { Button, FormGroup, FormControl } from 'react-bootstrap';
+import React from 'react'
+import { FormGroup, FormControl } from 'react-bootstrap';
 
-const SpellSearch = ({ filteredSpellList, filteredSpells, spells}) => (
+const SpellSearch = ({ filteredSpellList }) => (
   <form>
-    <FormGroup onSubmit={filteredSpellList}>
+    <FormGroup>
       <FormControl
         autoFocus
         onChange={filteredSpellList}
@@ -16,8 +16,6 @@ const SpellSearch = ({ filteredSpellList, filteredSpells, spells}) => (
 
 SpellSearch.propTypes = {
   filteredSpellList: React.PropTypes.func,
-  filteredSpells: React.PropTypes.array,
-  spells: React.PropTypes.array
 }
 
 export default SpellSearch

@@ -14,7 +14,7 @@ class App extends Component {
     this.filteredSpellList = this.filteredSpellList.bind(this)
   }
   componentDidMount() {
-    fetch('http://localhost:3000/spells')
+    fetch('http://localhost:8080/spells')
       .then(response => response.json())
       .then(spells => this.setState({
         spells,
@@ -22,16 +22,15 @@ class App extends Component {
       })
     )
   }
-
   filteredSpellList(e) {
     const filteredSpells = this.state.spells.filter(spell => {
-      if (spell.name.toLowerCase().indexOf(e.target.value) === 0) {
+      if (spell.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > -1) {
         return spell
       }
     })
-    setTimeout(this.setState({
+    this.setState({
       filteredSpells,
-    }), 100)
+    })
   }
   render() {
     return (
@@ -41,8 +40,6 @@ class App extends Component {
             <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
               <h1>DnD 5e Spellbook</h1>
               <SpellSearch
-                spells={this.state.spells}
-                filteredSpells={this.state.filteredSpells}
                 filteredSpellList={this.filteredSpellList}
               />
             </Col>

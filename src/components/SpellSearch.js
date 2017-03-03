@@ -15,7 +15,7 @@ const SpellSearch = ({ filteredSpellList }) => (
 )
 
 SpellSearch.propTypes = {
-  filteredSpellList: React.PropTypes.func,
+  filteredSpellList: React.PropTypes.func.isRequired,
 }
 
 export default SpellSearch

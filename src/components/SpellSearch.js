@@ -1,12 +1,12 @@
 import React from 'react'
 import { FormGroup, FormControl } from 'react-bootstrap';
 
-const SpellSearch = ({ filteredSpellList }) => (
+const SpellSearch = ({ filteredSearchList }) => (
   <form>
     <FormGroup>
       <FormControl
         autoFocus
-        onChange={filteredSpellList}
+        onChange={filteredSearchList}
         type='search'
         placeholder='Search Spells'
       />
@@ -15,7 +15,7 @@ const SpellSearch = ({ filteredSpellList }) => (
 )
 
 SpellSearch.propTypes = {
-  filteredSpellList: React.PropTypes.func.isRequired,
+  filteredSearchList: React.PropTypes.func.isRequired,
 }
 
 export default SpellSearch

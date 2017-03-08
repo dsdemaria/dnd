@@ -1,3 +1,3 @@
-export const splitClassList = (classList) => classList.split(', ')
+export const splitClassList = classList => classList.split(', ')
 
-export const searchHelper = (term, e) => term.toLowerCase().indexOf(e.target.value.toLowerCase());
+export const searchHelper = (spellDetail, term) => spellDetail.toLowerCase().includes(term.toLowerCase());

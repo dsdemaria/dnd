@@ -7,6 +7,15 @@ export default class SpellDetails extends Component {
     super(props);
     this.state = { open: false }
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.spell.name !== nextProps.spell.name) {
+      return true;
+    }
+    if (this.state.open !== nextState.open) {
+      return true;
+    }
+    return false;
+  }
   render() {
     const { spell } = this.props
     return (

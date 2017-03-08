@@ -17,17 +17,37 @@ class App extends Component {
   }
   componentDidMount() {
     fetch('http://localhost:8080/spells')
-      .then(response => response.json())
+      .then(response => {
+        return response.json()
+      })
       .then(spells => this.setState({
         spells,
         filteredSpells: spells
       })
     )
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.spells !== nextState.spells) {
+      return true;
+    }
+    if (this.state.filteredSpells !== nextState.filteredSpells) {
+      return true;
+    }
+    return false;
+  }
   filteredSearchList(e) {
     e.persist();
+    // const re = new RegExp(e.target.value, 'igm')
     const filteredSpells = this.state.spells.filter(spell => {
-      if (searchHelper(spell.name, e) > - 1 || searchHelper(spell.class, e) > - 1) {
+      // if (re.test(`${spell.name} ${spell.class} ${spell.school} ${spell.level}`)) {
+      //   return spell
+      // }
+      if (
+        searchHelper(spell.name, e.target.value) ||
+        searchHelper(spell.class, e.target.value) ||
+        searchHelper(spell.school, e.target.value) ||
+        searchHelper(spell.level, e.target.value)
+      ) {
         return spell
       }
     })
@@ -48,7 +68,7 @@ class App extends Component {
             <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
               <h1>DnD 5e Spellbook</h1>
               <SpellSearch
-                filteredSearchList={this.debouncedSearch(this.filteredSearchList, 100)}
+                filteredSearchList={this.debouncedSearch(this.filteredSearchList, 350)}
               />
             </Col>
           </Row>
@@ -56,7 +76,7 @@ class App extends Component {
             <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
               <Accordion>
                 {this.state.filteredSpells.map((spell, idx) =>
-                  <SpellDetails key={idx} spell={spell} />)}
+                  <SpellDetails key={spell.level + spell.name + idx} spell={spell} />)}
               </Accordion>
             </Col>
           </Row>

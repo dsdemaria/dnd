@@ -3,12 +3,12 @@ import { FormGroup, FormControl } from 'react-bootstrap';
 
 const SpellSearch = ({ filteredSearchList }) => (
   <form>
-    <FormGroup>
+    <FormGroup bsSize='large'>
       <FormControl
         autoFocus
         onChange={filteredSearchList}
         type='search'
-        placeholder='Search Spells'
+        placeholder='Search by spell or class'
       />
     </FormGroup>
   </form>

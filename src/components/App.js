@@ -37,11 +37,7 @@ class App extends Component {
   }
   filteredSearchList(e) {
     e.persist();
-    // const re = new RegExp(e.target.value, 'igm')
     const filteredSpells = this.state.spells.filter(spell => {
-      // if (re.test(`${spell.name} ${spell.class} ${spell.school} ${spell.level}`)) {
-      //   return spell
-      // }
       if (
         searchHelper(spell.name, e.target.value) ||
         searchHelper(spell.class, e.target.value) ||

@@ -70,3 +70,21 @@ export default class SpellDetails extends Component {
     )
   }
 }
+
+SpellDetails.propTypes = {
+  spell: React.PropTypes.shape({
+    name: React.PropTypes.string,
+    desc: React.PropTypes.string,
+    page: React.PropTypes.string,
+    range: React.PropTypes.string,
+    components: React.PropTypes.string,
+    material: React.PropTypes.string,
+    ritual: React.PropTypes.string,
+    duration: React.PropTypes.string,
+    concentration: React.PropTypes.string,
+    casting_time: React.PropTypes.string,
+    level: React.PropTypes.string,
+    school: React.PropTypes.string,
+    class: React.PropTypes.string,
+  }).isRequired
+}

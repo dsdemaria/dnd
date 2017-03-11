@@ -32,7 +32,7 @@ export default class SpellDetails extends Component {
               <dt>School</dt>
               <dd>{spell.school} | {spell.level}</dd>
               <dt>Classes</dt>
-              <ClassTags dndClasses={spell.class} />
+              <ClassTags dndClasses={spell.classes} />
               <dt>Duration</dt>
               <dd>{spell.duration}</dd>
               <dt>Range</dt>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { splitClassList } from './helpers.js';
 
 const styles = {
   dd: {
@@ -28,8 +27,7 @@ const styles = {
 }
 
 const ClassTags = ({ dndClasses }) => {
-  const listOfClasses = splitClassList(dndClasses)
-    .map((dndClass, idx) => <span style={{...styles.span, ...styles[dndClass]}} key={idx}>{dndClass}</span>)
+  const listOfClasses = dndClasses.map((dndClass, idx) => <span style={{...styles.span, ...styles[dndClass]}} key={idx}>{dndClass}</span>)
   return (
     <dd style={styles.dd}>
       {listOfClasses}
@@ -38,7 +36,7 @@ const ClassTags = ({ dndClasses }) => {
 }
 
 ClassTags.propTypes = {
-  dndClasses: React.PropTypes.string
+  dndClasses: React.PropTypes.arrayOf(React.PropTypes.string)
 }
 
 export default ClassTags

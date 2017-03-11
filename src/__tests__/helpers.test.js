@@ -1,14 +1,5 @@
-import { splitClassList, searchHelper } from '../components/helpers.js'
+import { searchHelper } from '../components/helpers.js'
 import spells from '../api/spells.json'
-
-describe('splitClassList', () => {
-  it('Should split class prop into individual classes', () => {
-    const classString = 'Wizard, Sorcerer'
-    const actual = splitClassList(classString)
-    const expected = ['Wizard', 'Sorcerer']
-    expect(actual).toEqual(expected)
-  })
-})
 
 describe('searchHelper', () => {
   it('Should return web spell from spells database', () => {
@@ -31,7 +22,7 @@ describe('searchHelper', () => {
       "casting_time":"1 action",
       "level":"2nd-level",
       "school":"Conjuration",
-      "class":"Druid, Sorcerer, Wizard",
+      "classes":["Druid", "Sorcerer", "Wizard"],
       "archetype":"Druid: Underdark",
       "circles":"Underdark"
     },]
@@ -57,10 +48,15 @@ describe('searchHelper', () => {
       "casting_time":"1 action",
       "level":"2nd-level",
       "school":"Conjuration",
-      "class":"Druid, Sorcerer, Wizard",
+      "classes":["Druid", "Sorcerer", "Wizard"],
       "archetype":"Druid: Underdark",
       "circles":"Underdark"
     },]
     expect(actual).toEqual(expected)
   })
+})
+
+describe('Search narrows down with two or more terms', () => {
+  // when I search for two terms
+  // I expect that they narrow down the search
 })

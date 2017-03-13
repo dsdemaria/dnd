@@ -1,12 +1,13 @@
 import React from 'react'
-import { FormGroup, FormControl } from 'react-bootstrap';
+import { FormGroup, FormControl } from 'react-bootstrap'
+import { debouncedSearch } from './helpers.js'
 
 const SpellSearch = ({ filteredSearchList }) => (
-  <form>
+  <form onSubmit={e => { e.preventDefault() }}>
     <FormGroup bsSize='large'>
       <FormControl
         autoFocus
-        onChange={filteredSearchList}
+        onChange={debouncedSearch(filteredSearchList, 350)}
         type='search'
         placeholder='Search by spell or class'
       />

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Panel, Grid, Row, Col } from 'react-bootstrap';
-import ClassTags from './ClassTags';
+import React, { Component } from 'react'
+import { Panel, Grid, Row, Col } from 'react-bootstrap'
+import ClassTags from './ClassTags'
 
 export default class SpellDetails extends Component {
   constructor(props) {

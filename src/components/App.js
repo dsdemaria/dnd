@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Accordion, Grid, Row, Col } from 'react-bootstrap';
-import SpellSearch from './SpellSearch';
-import SpellDetails from './SpellDetails';
-import { searchHelper } from './helpers'
-import debounce from 'lodash/debounce'
+import React, { Component } from 'react'
+import { Accordion, Grid, Row, Col } from 'react-bootstrap'
+import SpellSearch from './SpellSearch'
+import SpellDetails from './SpellDetails'
+import { searchHelper, classesArrayHelper } from './helpers'
 import './App.css';
 
 class App extends Component {
@@ -40,7 +39,7 @@ class App extends Component {
     const filteredSpells = this.state.spells.filter(spell => {
       if (
         searchHelper(spell.name, e.target.value) ||
-        searchHelper(spell.class, e.target.value) ||
+        classesArrayHelper(spell.classes, e.target.value) ||
         searchHelper(spell.school, e.target.value) ||
         searchHelper(spell.level, e.target.value)
       ) {
@@ -48,13 +47,6 @@ class App extends Component {
       }
     })
     this.setState({ filteredSpells, })
-  }
-  debouncedSearch(...args) {
-    const debounced = debounce(...args)
-    return (e) => {
-      e.persist()
-      return debounced(e)
-    }
   }
   render() {
     return (
@@ -64,7 +56,7 @@ class App extends Component {
             <Col xs={10} xsOffset={1} md={10} mdOffset={1}>
               <h1>DnD 5e Spellbook</h1>
               <SpellSearch
-                filteredSearchList={this.debouncedSearch(this.filteredSearchList, 350)}
+                filteredSearchList={this.filteredSearchList}
               />
             </Col>
           </Row>

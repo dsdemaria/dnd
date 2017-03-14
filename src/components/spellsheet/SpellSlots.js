@@ -5,12 +5,15 @@ const SpellSlotWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
+  padding: 1rem;
+  border-left: 1px solid lightgray;
 `
 const SpellSlotBox = styled.div`
   width: 2rem;
   height: 2rem;
   border: .25rem solid FireBrick;
   background: ${props => props.used ? 'FireBrick' : 'White'};
+  color: ${props => props.used ? 'White' : 'rgba(0,0,0,0)'};
   border-radius: .25rem;
   margin: 0.5rem;
 
@@ -18,23 +21,37 @@ const SpellSlotBox = styled.div`
     box-shadow: inset 0 0 .25rem rgba(178,34,34,.4), 0 0 .5rem rgba(178,34,34,.4);
   }
 `
-
+const SlotsTitle = styled.span`
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: gray;
+`
 export default class SpellSlots extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      slots: [true, false, false, false]
+      slots: [false, false, false, false]
     }
+    this.handleSlotBoxToggle = this.handleSlotBoxToggle.bind(this)
+  }
+  handleSlotBoxToggle(idx) {
+    const slots = [...this.state.slots]
+    slots[idx] = !slots[idx]
+    this.setState({ slots, })
   }
   render() {
     return (
       <SpellSlotWrapper>
+      <SlotsTitle>Slots</SlotsTitle>
         {
           this.state.slots.map((slotValue, idx) => {
             return <SpellSlotBox
               key={idx}
-              id={idx}
-              used={slotValue} />
+              idx={idx}
+              onClick={() => this.handleSlotBoxToggle(idx)}
+              used={slotValue}>
+                X
+              </SpellSlotBox>
           })
         }
       </SpellSlotWrapper>

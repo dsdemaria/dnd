@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Accordion, Grid, Row, Col } from 'react-bootstrap'
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
-import { searchHelper, classesArrayHelper } from './helpers'
+import { searchHelper, classesArrayHelper } from '../helpers'
 
 export default class Search extends Component {
   constructor() {

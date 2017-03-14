@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Grid } from 'react-bootstrap'
-import SpellSlot from './SpellSlot'
+import SpellLevel from './SpellLevel'
 
-const SpellSlotWrapper = styled.div`
+const SpellLevelWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
@@ -11,14 +11,13 @@ const SpellSlotWrapper = styled.div`
 const SpellSheet = () => (
   <Grid>
     <h2>SpellSheet</h2>
-    <SpellSlotWrapper>
-      <SpellSlot />
-      <SpellSlot />
-      <SpellSlot />
-      <SpellSlot />
-      <SpellSlot />
-      <SpellSlot />
-    </SpellSlotWrapper>
+    <SpellLevelWrapper>
+      <SpellLevel />
+      <SpellLevel />
+      <SpellLevel />
+      <SpellLevel />
+      <SpellLevel />
+    </SpellLevelWrapper>
   </Grid>
 )
 

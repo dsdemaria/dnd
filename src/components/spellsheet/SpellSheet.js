@@ -14,9 +14,6 @@ const SpellSheet = () => (
     <SpellLevelWrapper>
       <SpellLevel />
       <SpellLevel />
-      <SpellLevel />
-      <SpellLevel />
-      <SpellLevel />
     </SpellLevelWrapper>
   </Grid>
 )

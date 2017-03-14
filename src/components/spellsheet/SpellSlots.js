@@ -50,7 +50,7 @@ export default class SpellSlots extends Component {
               idx={idx}
               onClick={() => this.handleSlotBoxToggle(idx)}
               used={slotValue}>
-                X
+                &#10004;
               </SpellSlotBox>
           })
         }

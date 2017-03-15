@@ -3,6 +3,8 @@ import { Col } from 'react-bootstrap'
 import styled from 'styled-components'
 
 const SpellListWrapper = styled(Col)`
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
 `
 const SpellTitle = styled.span`

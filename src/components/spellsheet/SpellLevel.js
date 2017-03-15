@@ -7,6 +7,7 @@ import SpellList from './SpellList'
 const Wrapper = styled(Col)`
   border: 1px solid LightGray;
   border-radius: 3px;
+  margin-bottom: 3rem;
 `
 const WrapperBody = styled.div`
   display: flex;

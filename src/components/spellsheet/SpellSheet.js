@@ -1,21 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Grid } from 'react-bootstrap'
+import { Grid, Row } from 'react-bootstrap'
 import SpellLevel from './SpellLevel'
 
-const SpellLevelWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
-
-const SpellSheet = () => (
+const SpellSheet = ({ spellsData }) => (
   <Grid>
     <h2>SpellSheet</h2>
-    <SpellLevelWrapper>
-      <SpellLevel />
-      <SpellLevel />
-    </SpellLevelWrapper>
+    <Row>
+      {
+        spellsData.map( (spellData, idx) => <SpellLevel spellData={spellData} key={idx} /> )
+      }
+    </Row>
   </Grid>
 )
 
 export default SpellSheet
+
+// For 3 SpellLevel, put in one Row

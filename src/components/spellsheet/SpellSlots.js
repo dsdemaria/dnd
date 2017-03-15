@@ -9,13 +9,14 @@ const SpellSlotWrapper = styled.div`
   border-left: 1px solid lightgray;
 `
 const SpellSlotBox = styled.div`
+  cursor: pointer;
   width: 2rem;
   height: 2rem;
   border: .25rem solid FireBrick;
   background: ${props => props.used ? 'FireBrick' : 'White'};
   color: ${props => props.used ? 'White' : 'rgba(0,0,0,0)'};
   border-radius: .25rem;
-  margin: 0.5rem;
+  margin: 1rem 0.5rem;
 
   &:hover {
     box-shadow: inset 0 0 .25rem rgba(178,34,34,.4), 0 0 .5rem rgba(178,34,34,.4);
@@ -30,7 +31,7 @@ export default class SpellSlots extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      slots: [false, false, false, false]
+      slots: [...props.slots]
     }
     this.handleSlotBoxToggle = this.handleSlotBoxToggle.bind(this)
   }

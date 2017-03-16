@@ -24,15 +24,6 @@ export default class Search extends Component {
       })
     )
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.spells !== nextState.spells) {
-      return true;
-    }
-    if (this.state.filteredSpells !== nextState.filteredSpells) {
-      return true;
-    }
-    return false;
-  }
   filteredSearchList(e) {
     e.persist();
     const filteredSpells = this.state.spells.filter(spell => {
@@ -58,8 +49,8 @@ export default class Search extends Component {
         <Row>
           <Col>
             <Accordion>
-              {this.state.filteredSpells.map((spell, idx) =>
-                <SpellDetails key={spell.level + spell.name + idx} spell={spell} />)}
+              {this.state.filteredSpells.map(spell =>
+                <SpellDetails key={spell.level + spell.name} spell={spell} />)}
             </Accordion>
           </Col>
         </Row>

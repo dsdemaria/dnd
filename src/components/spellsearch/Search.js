@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Accordion, Grid, Row, Col } from 'react-bootstrap'
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
-import { searchHelper, classesArrayHelper } from '../helpers'
+import { fuzzySearch, splitSearchTerms, getSpells } from '../helpers'
 
 export default class Search extends Component {
   constructor() {
@@ -14,11 +14,8 @@ export default class Search extends Component {
     this.filteredSearchList = this.filteredSearchList.bind(this)
   }
   componentDidMount() {
-    fetch('http://localhost:8080/spells')
-      .then(response => {
-        return response.json()
-      })
-      .then(spells => this.setState({
+    getSpells().then(
+      spells => this.setState({
         spells,
         filteredSpells: spells
       })
@@ -26,16 +23,10 @@ export default class Search extends Component {
   }
   filteredSearchList(e) {
     e.persist();
-    const filteredSpells = this.state.spells.filter(spell => {
-      if (
-        searchHelper(spell.name, e.target.value) ||
-        classesArrayHelper(spell.classes, e.target.value) ||
-        searchHelper(spell.school, e.target.value) ||
-        searchHelper(spell.level, e.target.value)
-      ) {
-        return spell
-      }
-    })
+    const splitTerms = splitSearchTerms(e.target.value)
+    const filteredSpells = splitTerms.reduce((filteredList, term) => {
+      return fuzzySearch(filteredList, term)
+    }, this.state.spells)
     this.setState({ filteredSpells, })
   }
   render() {
@@ -49,8 +40,12 @@ export default class Search extends Component {
         <Row>
           <Col>
             <Accordion>
-              {this.state.filteredSpells.map(spell =>
-                <SpellDetails key={spell.level + spell.name} spell={spell} />)}
+              {this.state.filteredSpells.length === 0 ?
+                this.state.spells.map(spell =>
+                  <SpellDetails key={spell.level + spell.name} spell={spell} />)
+                :
+                this.state.filteredSpells.map(spell =>
+                  <SpellDetails key={spell.level + spell.name} spell={spell} />)}
             </Accordion>
           </Col>
         </Row>

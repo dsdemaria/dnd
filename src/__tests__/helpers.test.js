@@ -1,4 +1,4 @@
-import { searchHelper } from '../components/helpers.js'
+import { searchHelper, splitSearchTerms, getSpells } from '../components/helpers.js'
 import spells from '../api/spells.json'
 
 describe('searchHelper', () => {
@@ -56,7 +56,18 @@ describe('searchHelper', () => {
   })
 })
 
-describe('Search narrows down with two or more terms', () => {
-  // when I search for two terms
-  // I expect that they narrow down the search
+describe('splitSearchTerms', () => {
+  it('Should split terms by commas or spaces', () => {
+    const testString = 'cleric, level 1 necromancy'
+    const actual = splitSearchTerms(testString)
+    const expected = ['cleric', 'level 1', 'necromancy']
+    expect(actual).toEqual(expected)
+  })
+})
+
+describe('getSpells', () => {
+  it('Should return a GET response of spells', () => {
+    const result = getSpells()
+    expect(result).to.not.be.empty()
+  })
 })

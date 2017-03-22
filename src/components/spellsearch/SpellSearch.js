@@ -1,5 +1,5 @@
 import React from 'react'
-import { FormGroup, FormControl } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import styled from 'styled-components'
 import { debouncedSearch } from '../helpers.js'
 
@@ -10,11 +10,12 @@ const SearchBar = styled.form`
 const SpellSearch = ({ filteredSearchList }) => (
   <SearchBar onSubmit={e => { e.preventDefault() }}>
     <FormGroup bsSize='large'>
+      <ControlLabel>Search by class, level, school, and/or name</ControlLabel>
       <FormControl
         autoFocus
-        onChange={debouncedSearch(filteredSearchList, 350)}
+        onChange={debouncedSearch(filteredSearchList, 400)}
         type='search'
-        placeholder='Search by spell or class'
+        placeholder='ex. necromancy, 2nd-level'
       />
     </FormGroup>
   </SearchBar>

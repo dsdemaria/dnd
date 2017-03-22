@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Grid, Row } from 'react-bootstrap'
 import SpellLevel from './SpellLevel'
 
@@ -15,5 +14,3 @@ const SpellSheet = ({ spellsData }) => (
 )
 
 export default SpellSheet
-
-// For 3 SpellLevel, put in one Row

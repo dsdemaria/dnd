@@ -5,12 +5,12 @@ import styled from 'styled-components'
 const SpellListWrapper = styled(Col)`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding-top: 1rem;
 `
 const SpellTitle = styled.span`
   text-transform: uppercase;
   font-size: 1rem;
-  color: gray;
+  opacity: 0.7;
   margin-bottom: .25rem;
 `
 const SpellListUl = styled.ul`
@@ -20,6 +20,7 @@ const SpellListUl = styled.ul`
 `
 const SpellListLi = styled.li`
   margin-bottom: 1rem;
+  font-size: 2rem;
 `
 
 const SpellList = ({ listOfSpells }) => (

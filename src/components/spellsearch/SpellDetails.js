@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Panel, Grid, Row, Col } from 'react-bootstrap'
 import ClassTags from './ClassTags'
 
@@ -9,12 +9,13 @@ export default class SpellDetails extends Component {
   }
   render() {
     const { spell } = this.props
+    const { open } = this.state
     return (
       <Panel
         header={spell.name}
         collapsible
-        expanded={this.state.open}
-        onClick={() => this.setState({ open: !this.state.open })}
+        expanded={open}
+        onClick={() => this.setState({ open: !open })}
       >
       <Grid fluid>
         <Row>
@@ -63,19 +64,19 @@ export default class SpellDetails extends Component {
 }
 
 SpellDetails.propTypes = {
-  spell: React.PropTypes.shape({
-    name: React.PropTypes.string,
-    desc: React.PropTypes.string,
-    page: React.PropTypes.string,
-    range: React.PropTypes.string,
-    components: React.PropTypes.string,
-    material: React.PropTypes.string,
-    ritual: React.PropTypes.string,
-    duration: React.PropTypes.string,
-    concentration: React.PropTypes.string,
-    casting_time: React.PropTypes.string,
-    level: React.PropTypes.string,
-    school: React.PropTypes.string,
-    class: React.PropTypes.string,
+  spell: PropTypes.shape({
+    name: PropTypes.string,
+    desc: PropTypes.string,
+    page: PropTypes.string,
+    range: PropTypes.string,
+    components: PropTypes.string,
+    material: PropTypes.string,
+    ritual: PropTypes.string,
+    duration: PropTypes.string,
+    concentration: PropTypes.string,
+    casting_time: PropTypes.string,
+    level: PropTypes.string,
+    school: PropTypes.string,
+    class: PropTypes.string,
   }).isRequired
 }

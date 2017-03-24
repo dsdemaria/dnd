@@ -1,16 +1,24 @@
 import React from 'react'
 import { Nav, NavItem } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import styled from 'styled-components'
+
+const BoldBorderNav = styled(Nav)`
+  border: 0;
+`
+const BoldBorderNavItem = styled(NavItem)`
+  border-bottom: ${props => props.active ? '2px solid black' : 'white'};
+`
 
 const Navigation = () => (
-  <Nav bsStyle='tabs' activeKey='1'>
+  <BoldBorderNav bsStyle='tabs' activeKey='1'>
     <LinkContainer to='/search'>
-      <NavItem eventKey='1'>Search</NavItem>
+      <BoldBorderNavItem eventKey='1'>Search</BoldBorderNavItem>
     </LinkContainer>
     <LinkContainer to='/spellsheet'>
-      <NavItem eventKey='2'>Spell Sheet</NavItem>
+      <BoldBorderNavItem eventKey='2'>Spell Sheet</BoldBorderNavItem>
     </LinkContainer>
-  </Nav>
+  </BoldBorderNav>
 )
 
 export default Navigation

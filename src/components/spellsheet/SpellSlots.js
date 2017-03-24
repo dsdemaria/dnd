@@ -1,32 +1,39 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-const SpellSlotWrapper = styled.div`
+const Wrapper = styled.div`
+  background-color: #2196F3;
+  margin: 2rem;
+`
+const SlotsTitle = styled.span`
+  cursor: default;
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: white;
+  opacity: 0.7;
+`
+const SpellSlotsWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  padding: 1rem;
-  border-left: 1px solid lightgray;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #2196F3;
 `
 const SpellSlotBox = styled.div`
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  border: .25rem solid FireBrick;
-  background: ${props => props.used ? 'FireBrick' : 'White'};
-  color: ${props => props.used ? 'White' : 'rgba(0,0,0,0)'};
-  border-radius: .25rem;
-  margin: 1rem 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: .25rem solid #BBDEFB;
+  background: ${props => props.used ? '#FF5252' : '#2196F3'};
+  color: ${props => props.used ? 'white' : 'transparent'};
+  transition: ${props => props.used ? 'opacity, 250ms, linear-out-slow-in' : 'opacity, 250ms, linear-in-slow-out' };
+  margin: 1rem 0;
 
   &:hover {
-    box-shadow: inset 0 0 .25rem rgba(178,34,34,.4), 0 0 .5rem rgba(178,34,34,.4);
+    box-shadow: inset 0 0 .25rem #BBDEFB, 0 0 .5rem #BBDEFB;
+    box-shadow: ${props => props.used ? 'none' : '#BBDEFB'};
   }
 `
-const SlotsTitle = styled.span`
-  text-transform: uppercase;
-  font-size: 1rem;
-  color: gray;
-`
+
 export default class SpellSlots extends Component {
   constructor(props) {
     super(props)
@@ -42,20 +49,22 @@ export default class SpellSlots extends Component {
   }
   render() {
     return (
-      <SpellSlotWrapper>
-      <SlotsTitle>Slots</SlotsTitle>
-        {
-          this.state.slots.map((slotValue, idx) => {
-            return <SpellSlotBox
-              key={idx}
-              idx={idx}
-              onClick={() => this.handleSlotBoxToggle(idx)}
-              used={slotValue}>
-                &#10004;
-              </SpellSlotBox>
-          })
-        }
-      </SpellSlotWrapper>
+      <Wrapper>
+        <SlotsTitle>Slots</SlotsTitle>
+        <SpellSlotsWrapper>
+          {
+            this.state.slots.map((slotValue, idx) => {
+              return <SpellSlotBox
+                key={idx}
+                idx={idx}
+                onClick={() => this.handleSlotBoxToggle(idx)}
+                used={slotValue}>
+                  &#10004;
+                </SpellSlotBox>
+            })
+          }
+        </SpellSlotsWrapper>
+      </Wrapper>
     )
   }
 }

@@ -14,7 +14,7 @@ const WrapperBody = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 2rem 2rem;
-  padding: 0 2rem 2rem;
+  padding: 0 2rem 0;
   background: #1976D2;
   color: white;
   font-weight: lighter;

@@ -6,12 +6,13 @@ const SpellListWrapper = styled(Col)`
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
+  width: 100%;
 `
 const SpellTitle = styled.span`
   text-transform: uppercase;
   font-size: 1rem;
   opacity: 0.7;
-  margin-bottom: .25rem;
+  margin-bottom: 0.5rem;
 `
 const SpellListUl = styled.ul`
   list-style: none;

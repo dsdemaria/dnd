@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+  user-select: none;
   background-color: #2196F3;
   margin: 2rem;
 `
@@ -9,14 +10,17 @@ const SlotsTitle = styled.span`
   cursor: default;
   text-transform: uppercase;
   font-size: 1rem;
+  font-weight: normal;
   color: white;
   opacity: 0.7;
 `
 const SpellSlotsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: #2196F3;
+  padding: 0 2rem 1rem;
+  transition: opacity, 1000ms, linear-in-slow-out
+  background-color: ${props => props.children.every((element) => element.props.used === true) ? '#1976D2' : '#2196F3'};
+  opacity: ${props => props.children.every((element) => element.props.used === true) ? '0.5' : '1'}
 `
 const SpellSlotBox = styled.div`
   cursor: pointer;

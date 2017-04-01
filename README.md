@@ -6,7 +6,7 @@ A quick search tool for all the spells in Dungeons and Dragons, fifth edition.
 
 ## To start json-server
 
-Navigate to the
+From the parent project folder, navigate to src/api and run the following command:
 
 ```bash
 $ json-server --watch --port 8080 spells.json

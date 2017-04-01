@@ -1,6 +1,5 @@
 import debounce from 'lodash/debounce'
 import Fuse from 'fuse.js'
-import fetch from 'node-fetch'
 
 export const searchHelper = (spellDetail, term) => spellDetail.toLowerCase().includes(term.toLowerCase());
 
@@ -16,13 +15,7 @@ export const debouncedSearch = (...args) => {
 
 export const splitSearchTerms = searchInput => searchInput.split(',')
 
-export const getSpells = () => {
-  return fetch('http://localhost:8080/spells')
-    .then(response => response.json())
-    .then(spells => spells)
-    .catch(error => console.log(error))
-}
-
+//NEED TO ADD NUMBER SEARCH CAPABILITES. I THINK THAT THE NUMBERS NEED TO BE CONVERTED TO STRINGS
 export const fuzzySearch = (spells, searchTerm) => {
   const options = {
     threshold: 0.2,

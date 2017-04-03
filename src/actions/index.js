@@ -2,7 +2,7 @@ export const REQUEST_SPELLS = 'REQUEST_SPELLS'
 const SPELLS_URL = 'http://localhost:8080/spells'
 
 
-export const requestSpells = spells = ({
+const requestSpells = spells => ({
   type: REQUEST_SPELLS,
   spells
 })
@@ -12,7 +12,6 @@ export const fetchSpells = () => dispatch => {
     .then(response => response.json())
     .then(spells => {
       dispatch(requestSpells(spells))
-      console.log('action')
     })
     .catch(error => console.log(error))
 }

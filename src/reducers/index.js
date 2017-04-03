@@ -1,4 +1,4 @@
-import { REQUEST_SPELLS } from './actions'
+import { REQUEST_SPELLS } from '../actions'
 
 const DEFAULT_STATE = {
   spells: [],

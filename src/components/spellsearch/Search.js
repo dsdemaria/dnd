@@ -1,28 +1,34 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Accordion, Grid, Row, Col } from 'react-bootstrap'
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
 import { fetchSpells } from '../../actions'
 import { fuzzySearch, splitSearchTerms } from '../helpers'
 
-export default class Search extends Component {
-  componentDidMount() {
-    fetchSpells()
+class Search extends Component {
+  constructor(props) {
+    super(props)
+    this.filteredSearchList = this.filteredSearchList.bind(this)
   }
-  // filteredSearchList(e) {
-  //   e.persist();
-  //   const splitTerms = splitSearchTerms(e.target.value)
-  //   const filteredSpells = splitTerms.reduce((filteredList, term) => {
-  //     return fuzzySearch(filteredList, term)
-  //   }, this.state.spells)
-  //   this.setState({ filteredSpells, })
-  // }
+  componentDidMount() {
+    if (!this.props.spells) {
+      fetchSpells()
+    }
+  }
+  filteredSearchList(e) {
+    e.persist();
+    const splitTerms = splitSearchTerms(e.target.value)
+    return splitTerms.reduce((filteredList, term) => {
+      return fuzzySearch(filteredList, term)
+    }, this.props.spells)
+  }
   render() {
     return (
       <Grid>
         <Row>
           <Col>
-            <SpellSearch filteredSearchList={this.props.filteredSearchList} />
+            <SpellSearch filteredSearchList={this.filteredSearchList} />
           </Col>
         </Row>
         <Row>
@@ -41,3 +47,12 @@ export default class Search extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    spells: state.spells,
+    filteredSpells: state.spells
+  }
+}
+
+export default connect(mapStateToProps)(Search)

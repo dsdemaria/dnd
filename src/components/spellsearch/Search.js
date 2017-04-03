@@ -12,9 +12,7 @@ class Search extends Component {
     this.filteredSearchList = this.filteredSearchList.bind(this)
   }
   componentDidMount() {
-    if (!this.props.spells) {
-      fetchSpells()
-    }
+    this.props.dispatchFetchSpells()
   }
   filteredSearchList(e) {
     e.persist();
@@ -55,4 +53,12 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Search)
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchFetchSpells() {
+      dispatch(fetchSpells())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

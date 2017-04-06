@@ -4,29 +4,19 @@ import { Accordion, Grid, Row, Col } from 'react-bootstrap'
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
 import { fetchSpells } from '../../actions'
-import { fuzzySearch, splitSearchTerms } from '../helpers'
 
 class Search extends Component {
-  constructor(props) {
-    super(props)
-    this.filteredSearchList = this.filteredSearchList.bind(this)
-  }
   componentDidMount() {
-    this.props.dispatchFetchSpells()
-  }
-  filteredSearchList(e) {
-    e.persist();
-    const splitTerms = splitSearchTerms(e.target.value)
-    return splitTerms.reduce((filteredList, term) => {
-      return fuzzySearch(filteredList, term)
-    }, this.props.spells)
+    if (this.props.spells.length === 0) {
+      this.props.dispatchFetchSpells()
+    }
   }
   render() {
     return (
       <Grid>
         <Row>
           <Col>
-            <SpellSearch filteredSearchList={this.filteredSearchList} />
+            <SpellSearch />
           </Col>
         </Row>
         <Row>

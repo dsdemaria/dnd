@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import styled from 'styled-components'
 import { setSearchTerm } from '../../actions'
-import { debouncedSearch } from '../helpers.js'
 
 const SearchBar = styled.form`
   margin: 1rem;

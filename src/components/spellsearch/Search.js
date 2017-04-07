@@ -1,13 +1,29 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Accordion, Grid, Row, Col } from 'react-bootstrap'
+import styled, { keyframes } from 'styled-components';
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
 import { fetchSpells } from '../../actions'
 import { fuzzySearch, splitSearchTerms } from '../helpers'
 
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+`
+
+const Loading = styled.div`
+  display: inline-block;
+  font-size: 4rem;
+  animation: ${rotate360} 2s linear infinite;
+`;
+
 class Search extends Component {
-  componentDidMount () {
+  componentWillMount () {
     if (this.props.spells.length === 0) {
       this.props.dispatchFetchSpells()
     }
@@ -29,13 +45,11 @@ class Search extends Component {
           </Col>
         </Row>
         <Row>
+          { this.props.isLoading ? <Loading>⏳</Loading> : '' }
           <Col>
             <Accordion>
               {
-                !searchTerm ?
-                  fullSpellList
-                :
-                  filteredSpellsList
+                searchTerm ? filteredSpellsList : fullSpellList
               }
             </Accordion>
           </Col>
@@ -49,7 +63,8 @@ const mapStateToProps = state => {
   return {
     spells: state.spells,
     filteredSpells: state.spells,
-    searchTerm: state.searchTerm
+    searchTerm: state.searchTerm,
+    isLoading: state.isLoading
   }
 }
 

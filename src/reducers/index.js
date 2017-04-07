@@ -1,8 +1,9 @@
-import { REQUEST_SPELLS, SET_SEARCH_TERM } from '../actions'
+import { REQUEST_SPELLS, SET_SEARCH_TERM, TOGGLE_LOADING } from '../actions'
 
 const DEFAULT_STATE = {
   spells: [],
-  searchTerm: ''
+  searchTerm: '',
+  isLoading: true
 }
 
 const setSearchTerm = (state, action) => {
@@ -15,7 +16,14 @@ const setSearchTerm = (state, action) => {
 const requestSpells = (state, action) => {
   return {
     ...state,
-    spells: action.spells,
+    spells: action.spells
+  }
+}
+
+const toggleLoading = (state, action) => {
+  return {
+    ...state,
+    isLoading: action.isLoading
   }
 }
 
@@ -25,6 +33,8 @@ const rootReducer = (state = DEFAULT_STATE, action) => {
       return requestSpells(state, action)
     case SET_SEARCH_TERM:
       return setSearchTerm(state, action)
+    case TOGGLE_LOADING:
+      return toggleLoading(state, action)
     default:
       return state
   }

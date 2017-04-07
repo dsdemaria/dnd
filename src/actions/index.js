@@ -1,5 +1,6 @@
 export const REQUEST_SPELLS = 'REQUEST_SPELLS'
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
+export const TOGGLE_LOADING = 'TOGGLE_LOADING'
 const SPELLS_URL = 'http://localhost:8080/spells'
 
 export const requestSpells = spells => ({
@@ -12,11 +13,18 @@ export const setSearchTerm = searchTerm => ({
   searchTerm
 })
 
+export const toggleLoading = () => ({
+  type: TOGGLE_LOADING,
+  isLoading: false
+})
+
 export const fetchSpells = () => dispatch => {
   return fetch(SPELLS_URL)
     .then(response => response.json())
     .then(spells => {
       dispatch(requestSpells(spells))
+    }).then(() => {
+      dispatch(toggleLoading())
     })
     .catch(error => console.log('fetch error', error))
 }

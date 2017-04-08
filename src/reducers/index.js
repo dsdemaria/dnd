@@ -1,6 +1,5 @@
 import { REQUEST_SPELLS, SET_SEARCH_TERM, TOGGLE_LOADING, FILTER_SEARCH_LIST } from '../actions'
 import { splitSearchTerms, fuzzySearch } from '../components/helpers'
-import debounce from 'lodash/debounce'
 
 const DEFAULT_STATE = {
   spells: [],
@@ -38,7 +37,6 @@ const filteredSpells = (state, action) => {
       .reduce((filteredList, term) => fuzzySearch(filteredList, term), state.spells)
   }
 }
-
 
 const rootReducer = (state = DEFAULT_STATE, action) => {
   switch(action.type) {

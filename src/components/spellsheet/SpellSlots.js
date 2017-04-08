@@ -38,7 +38,7 @@ const SpellSlotBox = styled.div`
   }
 `
 
-export default class SpellSlots extends Component {
+class SpellSlots extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -72,3 +72,5 @@ export default class SpellSlots extends Component {
     )
   }
 }
+
+export default SpellSlots

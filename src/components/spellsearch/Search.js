@@ -4,15 +4,15 @@ import { Accordion, Grid, Row, Col } from 'react-bootstrap'
 import styled, { keyframes } from 'styled-components';
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
-import { fetchSpells } from '../../actions'
-import { fuzzySearch, splitSearchTerms } from '../helpers'
+import { fetchSpells, filterSearchList } from '../../actions'
+import debounce from 'lodash/debounce'
 
 const rotate360 = keyframes`
   from {
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 `
 
@@ -28,15 +28,15 @@ class Search extends Component {
       this.props.dispatchFetchSpells()
     }
   }
-  filterSearchSpells = (searchTerm, spellsList) => {
-    return splitSearchTerms(searchTerm)
-      .reduce((filteredList, term) => fuzzySearch(filteredList, term), spellsList)
-      .map(spell => <SpellDetails key={spell.level + spell.name} spell={spell} />)
+  componentWillUpdate (nextProps, nextState) {
+    const { searchTerm, spells } = this.props
+    if (nextProps.searchTerm !== searchTerm) {
+      this.props.dispatchFilterSearchSpells(searchTerm, spells)
+    }
   }
   render() {
-    const { spells, searchTerm } = this.props
-    const fullSpellList = spells.map(spell => <SpellDetails key={spell.level + spell.name} spell={spell} />)
-    const filteredSpellsList = this.filterSearchSpells(searchTerm, spells)
+    const { searchTerm, spells, filteredSpells, isLoading } = this.props
+    console.log(this.props)
     return (
       <Grid>
         <Row>
@@ -45,11 +45,14 @@ class Search extends Component {
           </Col>
         </Row>
         <Row>
-          { this.props.isLoading ? <Loading>⏳</Loading> : '' }
+          { isLoading ? <Loading>⏳</Loading> : '' }
           <Col>
             <Accordion>
               {
-                searchTerm ? filteredSpellsList : fullSpellList
+                searchTerm ?
+                  filteredSpells.map(spell => <SpellDetails key={spell.level + spell.name} spell={spell} />)
+                :
+                  spells.map(spell => <SpellDetails key={spell.level + spell.name} spell={spell} />)
               }
             </Accordion>
           </Col>
@@ -62,7 +65,7 @@ class Search extends Component {
 const mapStateToProps = state => {
   return {
     spells: state.spells,
-    filteredSpells: state.spells,
+    filteredSpells: state.filteredSpells,
     searchTerm: state.searchTerm,
     isLoading: state.isLoading
   }
@@ -70,9 +73,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchFetchSpells() {
-      dispatch(fetchSpells())
-    }
+    dispatchFetchSpells: () => dispatch(fetchSpells()),
+    dispatchFilterSearchSpells: debounce(() => dispatch(filterSearchList()), 500)
   }
 }
 

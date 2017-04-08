@@ -1,8 +1,11 @@
-import { REQUEST_SPELLS, SET_SEARCH_TERM, TOGGLE_LOADING } from '../actions'
+import { REQUEST_SPELLS, SET_SEARCH_TERM, TOGGLE_LOADING, FILTER_SEARCH_LIST } from '../actions'
+import { splitSearchTerms, fuzzySearch } from '../components/helpers'
+import debounce from 'lodash/debounce'
 
 const DEFAULT_STATE = {
   spells: [],
   searchTerm: '',
+  filteredSpells: [],
   isLoading: true
 }
 
@@ -16,6 +19,7 @@ const setSearchTerm = (state, action) => {
 const requestSpells = (state, action) => {
   return {
     ...state,
+    filteredSpells: action.spells,
     spells: action.spells
   }
 }
@@ -27,6 +31,15 @@ const toggleLoading = (state, action) => {
   }
 }
 
+const filteredSpells = (state, action) => {
+  return {
+    ...state,
+    filteredSpells: splitSearchTerms(state.searchTerm)
+      .reduce((filteredList, term) => fuzzySearch(filteredList, term), state.spells)
+  }
+}
+
+
 const rootReducer = (state = DEFAULT_STATE, action) => {
   switch(action.type) {
     case REQUEST_SPELLS:
@@ -35,6 +48,8 @@ const rootReducer = (state = DEFAULT_STATE, action) => {
       return setSearchTerm(state, action)
     case TOGGLE_LOADING:
       return toggleLoading(state, action)
+    case FILTER_SEARCH_LIST:
+      return filteredSpells(state, action)
     default:
       return state
   }

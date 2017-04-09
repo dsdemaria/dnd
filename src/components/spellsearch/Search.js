@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Accordion, Grid, Row, Col } from 'react-bootstrap'
+import { Accordion, Grid, Row, Col, Panel } from 'react-bootstrap'
+import LazyLoad from 'react-lazyload';
 import styled, { keyframes } from 'styled-components';
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
 import { fetchSpells, filterSearchList } from '../../actions'
-import debounce from 'lodash/debounce'
 
 const rotate360 = keyframes`
   from {
@@ -50,9 +50,23 @@ class Search extends Component {
             <Accordion>
               {
                 searchTerm ?
-                  filteredSpells.map(spell => <SpellDetails key={spell.level + spell.name} spell={spell} />)
+                  filteredSpells.map(spell =>
+                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[200, 200]}>
+                      <SpellDetails key={spell.level + spell.name} spell={spell} />
+                    </LazyLoad>
+                  )
                 :
-                  spells.map(spell => <SpellDetails key={spell.level + spell.name} spell={spell} />)
+                  spells.map(spell =>
+                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[200, 200]}>
+                      <SpellDetails key={spell.level + spell.name} spell={spell} />
+                    </LazyLoad>
+                  )
+              }
+              {
+                filteredSpells.length === 0 && !isLoading ?
+                    <div>No results!</div>
+                  :
+                    ''
               }
             </Accordion>
           </Col>
@@ -74,7 +88,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatchFetchSpells: () => dispatch(fetchSpells()),
-    dispatchFilterSearchSpells: debounce(() => dispatch(filterSearchList()), 500)
+    dispatchFilterSearchSpells: () => dispatch(filterSearchList())
   }
 }
 

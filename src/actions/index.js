@@ -20,7 +20,6 @@ export const toggleLoading = () => ({
 })
 
 export const filterSearchList = filteredSpells => ({
-  meta: { debounce: 'simple' },
   type: FILTER_SEARCH_LIST,
   filteredSpells
 })

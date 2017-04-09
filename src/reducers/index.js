@@ -40,14 +40,14 @@ const filteredSpells = (state, action) => {
 
 const rootReducer = (state = DEFAULT_STATE, action) => {
   switch(action.type) {
-    case REQUEST_SPELLS:
-      return requestSpells(state, action)
     case SET_SEARCH_TERM:
       return setSearchTerm(state, action)
     case TOGGLE_LOADING:
       return toggleLoading(state, action)
     case FILTER_SEARCH_LIST:
       return filteredSpells(state, action)
+    case REQUEST_SPELLS:
+      return requestSpells(state, action)
     default:
       return state
   }

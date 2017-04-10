@@ -1,4 +1,35 @@
 {
+  "spellcastingData": [
+    {
+      "title": "Cantrips",
+      "spellsList": [
+        { "name": "True Strike" },
+        { "name": "Prestidigitaiton" },
+        { "name": "Firebolt" },
+        { "name": "Ray of Frost" }
+      ],
+      "slots": []
+    },
+    {
+      "title": "Level 1",
+      "spellsList": [
+        { "name": "Magic Missle" },
+        { "name": "Ray of Enfeeblement" },
+        { "name": "Ray of Sickness" },
+        { "name": "Hex" }
+      ],
+      "slots": [ false, false, false, false ]
+    },
+    {
+      "title": "Level 2",
+      "spellsList": [
+        { "name": "Scorching Ray" },
+        { "name": "Hold Person" },
+        { "name": "Web" }
+      ],
+      "slots": [ false, false, false ]
+    }
+  ],
   "spells": [
     {
       "name":"Abi-Dalzim's Horrid Wilting",

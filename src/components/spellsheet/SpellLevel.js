@@ -31,7 +31,9 @@ const SpellLevel = ({ spellData }) => (
       <WrapperBody>
         <SpellList listOfSpells={spellData.spellsList} />
       </WrapperBody>
-      <SpellSlots slots={spellData.slots} />
+      {
+        spellData.slots.length >= 1 ? <SpellSlots slots={spellData.slots} /> : ''
+      }
     </Wrapper>
   </Col>
 )

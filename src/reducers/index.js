@@ -1,8 +1,15 @@
-import { REQUEST_SPELLS, SET_SEARCH_TERM, TOGGLE_LOADING, FILTER_SEARCH_LIST } from '../actions'
+import {
+  REQUEST_SPELLS,
+  REQUEST_SPELLCASTING_DATA,
+  SET_SEARCH_TERM,
+  TOGGLE_LOADING,
+  FILTER_SEARCH_LIST,
+} from '../actions'
 import { splitSearchTerms, fuzzySearch } from '../components/helpers'
 
 const DEFAULT_STATE = {
   spells: [],
+  spellcastingData: [],
   searchTerm: '',
   filteredSpells: [],
   isLoading: true
@@ -38,6 +45,13 @@ const filteredSpells = (state, action) => {
   }
 }
 
+const requestSpellcastingData = (state, action) => {
+  return {
+    ...state,
+    spellcastingData: action.spellcastingData
+  }
+}
+
 const rootReducer = (state = DEFAULT_STATE, action) => {
   switch(action.type) {
     case SET_SEARCH_TERM:
@@ -48,6 +62,8 @@ const rootReducer = (state = DEFAULT_STATE, action) => {
       return filteredSpells(state, action)
     case REQUEST_SPELLS:
       return requestSpells(state, action)
+    case REQUEST_SPELLCASTING_DATA:
+      return requestSpellcastingData(state, action)
     default:
       return state
   }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Accordion, Grid, Row, Col, Panel } from 'react-bootstrap'
-import LazyLoad from 'react-lazyload';
-import styled, { keyframes } from 'styled-components';
+import LazyLoad from 'react-lazyload'
+import styled, { keyframes } from 'styled-components'
 import SpellSearch from './SpellSearch'
 import SpellDetails from './SpellDetails'
 import { fetchSpells, filterSearchList } from '../../actions'
+import debounce from 'lodash/debounce'
 
 const rotate360 = keyframes`
   from {
@@ -51,23 +52,19 @@ class Search extends Component {
               {
                 searchTerm ?
                   filteredSpells.map(spell =>
-                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[200, 200]}>
+                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[100, 100]}>
                       <SpellDetails key={spell.level + spell.name} spell={spell} />
                     </LazyLoad>
                   )
                 :
                   spells.map(spell =>
-                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[200, 200]}>
+                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[100, 100]}>
                       <SpellDetails key={spell.level + spell.name} spell={spell} />
                     </LazyLoad>
                   )
               }
-              {
-                filteredSpells.length === 0 && !isLoading ?
-                    <div>No results!</div>
-                  :
-                    ''
-              }
+              { !filteredSpells.length && !isLoading ?
+                  <div style={{fontSize: '2rem'}}>😞 No results! 😞</div> : '' }
             </Accordion>
           </Col>
         </Row>
@@ -88,7 +85,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatchFetchSpells: () => dispatch(fetchSpells()),
-    dispatchFilterSearchSpells: () => dispatch(filterSearchList())
+    // dispatchFilterSearchSpells: () => dispatch(filterSearchList()),
+    dispatchFilterSearchSpells: debounce(() => dispatch(filterSearchList()), 500)
   }
 }
 

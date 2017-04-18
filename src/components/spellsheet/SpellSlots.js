@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { toggleCheckbox } from '../actions'
 
 const Wrapper = styled.div`
   user-select: none;
@@ -38,39 +40,29 @@ const SpellSlotBox = styled.div`
   }
 `
 
-class SpellSlots extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      slots: [...props.slots]
-    }
-    this.handleSlotBoxToggle = this.handleSlotBoxToggle.bind(this)
-  }
-  handleSlotBoxToggle(idx) {
-    const slots = [...this.state.slots]
-    slots[idx] = !slots[idx]
-    this.setState({ slots, })
-  }
-  render() {
-    return (
-      <Wrapper>
-        <SlotsTitle>Slots</SlotsTitle>
-        <SpellSlotsWrapper>
-          {
-            this.state.slots.map((slotValue, idx) => {
-              return <SpellSlotBox
-                key={idx}
-                idx={idx}
-                onClick={() => this.handleSlotBoxToggle(idx)}
-                used={slotValue}>
-                  &#10004;
-                </SpellSlotBox>
-            })
-          }
-        </SpellSlotsWrapper>
-      </Wrapper>
-    )
+const SpellSlots = ({ slots }) => (
+  <Wrapper>
+    <SlotsTitle>Slots</SlotsTitle>
+    <SpellSlotsWrapper>
+      {
+        slots.map((slotValue) => {
+          return <SpellSlotBox
+            key={slotValue.id}
+            idx={slotValue.id}
+            onClick={dispatchToggleCheckBox(slotValue.id)}
+            used={slotValue.value}>
+              &#10004;
+            </SpellSlotBox>
+        })
+      }
+    </SpellSlotsWrapper>
+  </Wrapper>
+)
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchToggleCheckBox: (id) => dispatch(toggleCheckbox(id))
   }
 }
 
-export default SpellSlots
+export default connect(mapDispatchToProps)(SpellSlots)

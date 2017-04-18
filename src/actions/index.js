@@ -2,6 +2,7 @@ export const REQUEST_SPELLS = 'REQUEST_SPELLS'
 export const REQUEST_SPELLCASTING_DATA = 'REQUEST_SPELLCASTING_DATA'
 export const SET_SEARCH_TERM = 'SET_SEARCH_TERM'
 export const TOGGLE_LOADING = 'TOGGLE_LOADING'
+export const TOGGLE_CHECKBOX = 'TOGGLE_CHECKBOX'
 export const FILTER_SEARCH_LIST = 'FILTER_SEARCH_LIST'
 const SPELLS_URL = 'http://localhost:8080/spells'
 const SPELLCASTINGDATA_URL = 'http://localhost:8080/spellcastingData'
@@ -24,6 +25,11 @@ export const setSearchTerm = searchTerm => ({
 export const toggleLoading = () => ({
   type: TOGGLE_LOADING,
   isLoading: false
+})
+
+export const toggleCheckbox = id => ({
+  type: TOGGLE_CHECKBOX,
+  id
 })
 
 export const filterSearchList = filteredSpells => ({

@@ -3,14 +3,15 @@ import {
   REQUEST_SPELLCASTING_DATA,
   SET_SEARCH_TERM,
   TOGGLE_LOADING,
+  TOGGLE_CHECKBOX,
   FILTER_SEARCH_LIST,
 } from '../actions'
 import { splitSearchTerms, fuzzySearch } from '../components/helpers'
 
 const DEFAULT_STATE = {
-  spells: [],
   spellcastingData: [],
   searchTerm: '',
+  spells: [],
   filteredSpells: [],
   isLoading: true
 }
@@ -37,6 +38,16 @@ const toggleLoading = (state, action) => {
   }
 }
 
+const toggleCheckbox = (state, action) => {
+  console.log(state)
+  // if (action.id === state.id) {
+  //   return {
+  //     ...state,
+  //     value: !state.value
+  //   }
+  // }
+}
+
 const filteredSpells = (state, action) => {
   return {
     ...state,
@@ -48,7 +59,7 @@ const filteredSpells = (state, action) => {
 const requestSpellcastingData = (state, action) => {
   return {
     ...state,
-    spellcastingData: action.spellcastingData
+    spellcastingData: action.spellcastingData,
   }
 }
 
@@ -58,6 +69,8 @@ const rootReducer = (state = DEFAULT_STATE, action) => {
       return setSearchTerm(state, action)
     case TOGGLE_LOADING:
       return toggleLoading(state, action)
+    case TOGGLE_CHECKBOX:
+      return toggleCheckbox(state, action)
     case FILTER_SEARCH_LIST:
       return filteredSpells(state, action)
     case REQUEST_SPELLS:

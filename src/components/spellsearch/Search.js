@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Accordion, Grid, Row, Col, Panel } from 'react-bootstrap'
 import LazyLoad from 'react-lazyload'
@@ -37,7 +37,6 @@ class Search extends Component {
   }
   render() {
     const { searchTerm, spells, filteredSpells, isLoading } = this.props
-    console.log(this.props)
     return (
       <Grid>
         <Row>
@@ -51,26 +50,33 @@ class Search extends Component {
             <Accordion>
               {
                 searchTerm ?
-                  filteredSpells.map(spell =>
-                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[100, 100]}>
-                      <SpellDetails key={spell.level + spell.name} spell={spell} />
+                  filteredSpells.map((spell, idx) =>
+                    <LazyLoad key={idx} placeholder={<Panel>loading...</Panel>} offset={[200, 200]}>
+                      <SpellDetails spell={spell} />
                     </LazyLoad>
                   )
                 :
-                  spells.map(spell =>
-                    <LazyLoad placeholder={<Panel>loading...</Panel>} offset={[100, 100]}>
-                      <SpellDetails key={spell.level + spell.name} spell={spell} />
+                  spells.map((spell, idx) =>
+                    <LazyLoad key={idx} placeholder={<Panel>loading...</Panel>} offset={[200, 200]}>
+                      <SpellDetails spell={spell} />
                     </LazyLoad>
                   )
               }
-              { !filteredSpells.length && !isLoading ?
-                  <div style={{fontSize: '2rem'}}>😞 No results! 😞</div> : '' }
             </Accordion>
+            { !filteredSpells.length && !isLoading ?
+                <div style={{fontSize: '2rem'}}>😞 No results! 😞</div> : '' }
           </Col>
         </Row>
       </Grid>
     );
   }
+}
+
+Search.propTypes = {
+  spells: PropTypes.arrayOf(PropTypes.object),
+  filteredSpells: PropTypes.arrayOf(PropTypes.object),
+  searchTerm: PropTypes.string,
+  isLoading: PropTypes.bool
 }
 
 const mapStateToProps = state => {
@@ -85,8 +91,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatchFetchSpells: () => dispatch(fetchSpells()),
-    // dispatchFilterSearchSpells: () => dispatch(filterSearchList()),
-    dispatchFilterSearchSpells: debounce(() => dispatch(filterSearchList()), 500)
+    dispatchFilterSearchSpells: debounce(() => dispatch(filterSearchList()), 200)
   }
 }
 

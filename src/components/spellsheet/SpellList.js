@@ -24,12 +24,12 @@ const SpellListLi = styled.li`
   font-size: 2rem;
 `
 
-const SpellList = ({ listOfSpells }) => (
+const SpellList = ({ spells }) => (
   <SpellListWrapper>
     <SpellTitle>Spells</SpellTitle>
     <SpellListUl>
       {
-        listOfSpells.map((spell, idx) => <SpellListLi key={idx}>{spell.name}</SpellListLi>)
+        spells.map((spell, idx) => <SpellListLi key={idx}>{spell}</SpellListLi>)
       }
     </SpellListUl>
   </SpellListWrapper>

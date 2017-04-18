@@ -24,15 +24,15 @@ const Title = styled.h3`
   padding-bottom: 1.5rem;
   margin: 2rem;
 `
-const SpellLevel = ({ spellData }) => (
+const SpellLevel = ({ spellcastingData }) => (
   <Col xs={12} sm={6} md={4} lg={4}>
     <Wrapper>
-      <Title>{spellData.title}</Title>
+      <Title>{spellcastingData.title}</Title>
       <WrapperBody>
-        <SpellList listOfSpells={spellData.spellsList} />
+        <SpellList spells={spellcastingData.spells} />
       </WrapperBody>
       {
-        spellData.slots.length >= 1 ? <SpellSlots slots={spellData.slots} /> : ''
+        spellcastingData.slots.length >= 1 ? <SpellSlots slots={spellcastingData.slots} /> : ''
       }
     </Wrapper>
   </Col>

@@ -2,32 +2,44 @@
   "spellcastingData": [
     {
       "title": "Cantrips",
-      "spellsList": [
-        { "name": "True Strike" },
-        { "name": "Prestidigitaiton" },
-        { "name": "Firebolt" },
-        { "name": "Ray of Frost" }
-      ],
-      "slots": []
+      "slots": [],
+      "spells": ["True Strike", "Prestidigitaiton", "Firebolt", "Ray of Frost"]
     },
     {
       "title": "Level 1",
-      "spellsList": [
-        { "name": "Magic Missle" },
-        { "name": "Ray of Enfeeblement" },
-        { "name": "Ray of Sickness" },
-        { "name": "Hex" }
-      ],
-      "slots": [ false, false, false, false ]
+      "slots": [{
+          "id": "1.0",
+          "value": "false"
+        },
+        {
+          "id": "1.1",
+          "value": "false"
+        },
+        {
+          "id": "1.2",
+          "value": "false"
+        },
+        {
+          "id": "1.3",
+          "value": "false"
+        }],
+      "spells": ["Magic Missle", "Ray of Enfeeblement", "Ray of Sickness", "Hex"]
     },
     {
       "title": "Level 2",
-      "spellsList": [
-        { "name": "Scorching Ray" },
-        { "name": "Hold Person" },
-        { "name": "Web" }
-      ],
-      "slots": [ false, false, false ]
+      "slots": [{
+          "id": "2.0",
+          "value": "false"
+        },
+        {
+          "id": "2.1",
+          "value": "false"
+        },
+        {
+          "id": "2.2",
+          "value": "false"
+        }],
+      "spells": ["Scorching Ray", "Hold Person", "Web"]
     }
   ],
   "spells": [

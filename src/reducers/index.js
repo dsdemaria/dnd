@@ -39,13 +39,24 @@ const toggleLoading = (state, action) => {
 }
 
 const toggleCheckbox = (state, action) => {
-  console.log(state)
-  // if (action.id === state.id) {
-  //   return {
-  //     ...state,
-  //     value: !state.value
-  //   }
-  // }
+  return {
+    ...state,
+    spellcastingData: state.spellcastingData.map(level => {
+      return {
+        ...level,
+        slots: level.slots.map(slotValue => {
+          if (slotValue.id === action.id) {
+            return {
+              ...slotValue,
+              value: !slotValue.value
+            }
+          } else {
+            return slotValue
+          }
+        })
+      }
+    })
+  }
 }
 
 const filteredSpells = (state, action) => {

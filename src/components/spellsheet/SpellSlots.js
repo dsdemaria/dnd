@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { toggleCheckbox } from '../actions'
+import { toggleCheckbox } from '../../actions'
 
 const Wrapper = styled.div`
   user-select: none;
@@ -40,7 +40,7 @@ const SpellSlotBox = styled.div`
   }
 `
 
-const SpellSlots = ({ slots }) => (
+const SpellSlots = ({ slots, dispatchToggleCheckbox }) => (
   <Wrapper>
     <SlotsTitle>Slots</SlotsTitle>
     <SpellSlotsWrapper>
@@ -49,7 +49,7 @@ const SpellSlots = ({ slots }) => (
           return <SpellSlotBox
             key={slotValue.id}
             idx={slotValue.id}
-            onClick={dispatchToggleCheckBox(slotValue.id)}
+            onClick={() => dispatchToggleCheckbox(slotValue.id)}
             used={slotValue.value}>
               &#10004;
             </SpellSlotBox>
@@ -59,10 +59,12 @@ const SpellSlots = ({ slots }) => (
   </Wrapper>
 )
 
-const mapDispatchToProps = dispatch => {
-  return {
-    dispatchToggleCheckBox: (id) => dispatch(toggleCheckbox(id))
-  }
+SpellSlots.propTypes = {
+  dispatchToggleCheckBox: PropTypes.func
 }
 
-export default connect(mapDispatchToProps)(SpellSlots)
+const mapDispatchToProps = dispatch => ({
+  dispatchToggleCheckbox: (id) => dispatch(toggleCheckbox(id))
+})
+
+export default connect(undefined, mapDispatchToProps)(SpellSlots)

@@ -3,25 +3,25 @@
     {
       "title": "Cantrips",
       "slots": [],
-      "spells": ["True Strike", "Prestidigitaiton", "Firebolt", "Ray of Frost"]
+      "spells": ["false Strike", "Prestidigitaiton", "Firebolt", "Ray of Frost"]
     },
     {
       "title": "Level 1",
       "slots": [{
           "id": "1.0",
-          "value": "false"
+          "value": false
         },
         {
           "id": "1.1",
-          "value": "false"
+          "value": false
         },
         {
           "id": "1.2",
-          "value": "false"
+          "value": false
         },
         {
           "id": "1.3",
-          "value": "false"
+          "value": false
         }],
       "spells": ["Magic Missle", "Ray of Enfeeblement", "Ray of Sickness", "Hex"]
     },
@@ -29,15 +29,15 @@
       "title": "Level 2",
       "slots": [{
           "id": "2.0",
-          "value": "false"
+          "value": false
         },
         {
           "id": "2.1",
-          "value": "false"
+          "value": false
         },
         {
           "id": "2.2",
-          "value": "false"
+          "value": false
         }],
       "spells": ["Scorching Ray", "Hold Person", "Web"]
     }
@@ -691,7 +691,7 @@
     },
     {
       "name":"Blur",
-      "desc":"<p>Your body becomes blurred, shifting and wavering to all who can see you. For the duration, any creature has disadvantage on attack rolls against you. An attacker is immune to this effect if it doesn’t rely on sight, as with blindsight, or can see through illusions, as with truesight.</p>",
+      "desc":"<p>Your body becomes blurred, shifting and wavering to all who can see you. For the duration, any creature has disadvantage on attack rolls against you. An attacker is immune to this effect if it doesn’t rely on sight, as with blindsight, or can see through illusions, as with falsesight.</p>",
       "page":"phb 219",
       "range":"Self",
       "components":"V",
@@ -912,7 +912,7 @@
     },
     {
       "name":"Clairvoyance",
-      "desc":"<p>You create an invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees). The sensor remains in place for the duration, and it can’t be attacked or otherwise interacted with.</p><p>When you cast the spell, you choose seeing or hearing. You can use the chosen sense through the sensor as if you were in its space. As your action, you can switch between seeing and hearing.</p><p>A creature that can see the sensor (such as a creature benefiting from see invisibility or truesight) sees a luminous, intangible orb about the size of your fist.</p>",
+      "desc":"<p>You create an invisible sensor within range in a location familiar to you (a place you have visited or seen before) or in an obvious location that is unfamiliar to you (such as behind a door, around a corner, or in a grove of trees). The sensor remains in place for the duration, and it can’t be attacked or otherwise interacted with.</p><p>When you cast the spell, you choose seeing or hearing. You can use the chosen sense through the sensor as if you were in its space. As your action, you can switch between seeing and hearing.</p><p>A creature that can see the sensor (such as a creature benefiting from see invisibility or falsesight) sees a luminous, intangible orb about the size of your fist.</p>",
       "page":"phb 222",
       "range":"1 mile",
       "components":"V, S, M",
@@ -1737,7 +1737,7 @@
     },
     {
       "name":"Disintegrate",
-      "desc":"<p>A thin green ray springs from your pointing finger to a target that you can see within range. The target can be a creature, an object, or a creation of magical force, such as the wall created by wall of force.</p><p>A creature targeted by this spell must make a dexterity saving throw. On a failed save, the target takes 10d6 + 40 force damage. If this damage reduces the target to 0 hit points, it is disintegrated.</p><p>A disintegrated creature and everything it is wearing and carrying, except magic items, are reduced to a pile of fine gray dust. The creature can be restored to life only by means of a true resurrection or a wish spell.</p><p>This spell automatically disintegrates a Large or smaller nonmagical object or a creation of magical force. If the target is a Huge or larger object or creation of force, this spell disintegrates a 10-foot-cube portion of it. A magic item is unaffected by this spell.</p>",
+      "desc":"<p>A thin green ray springs from your pointing finger to a target that you can see within range. The target can be a creature, an object, or a creation of magical force, such as the wall created by wall of force.</p><p>A creature targeted by this spell must make a dexterity saving throw. On a failed save, the target takes 10d6 + 40 force damage. If this damage reduces the target to 0 hit points, it is disintegrated.</p><p>A disintegrated creature and everything it is wearing and carrying, except magic items, are reduced to a pile of fine gray dust. The creature can be restored to life only by means of a false resurrection or a wish spell.</p><p>This spell automatically disintegrates a Large or smaller nonmagical object or a creation of magical force. If the target is a Huge or larger object or creation of force, this spell disintegrates a 10-foot-cube portion of it. A magic item is unaffected by this spell.</p>",
       "higher_level":"<p>When you cast this spell using a spell slot of 7th level or higher, the damage increases by 3d6 for each slot level above 6th.</p>",
       "page":"phb 233",
       "range":"60 feet",
@@ -2233,7 +2233,7 @@
       "patrons":"Archfey"
     },
     {
-      "name":"False Life",
+      "name":"false Life",
       "desc":"<p>Bolstering yourself with a necromantic facsimile of life, you gain 1d4 + 4 temporary hit points for the duration.</p>",
       "higher_level":"<p>When you cast this spell using a spell slot of 2nd level or higher, you gain 5 additional temporary hit points for each slot level above 1st.</p>",
       "page":"phb 239",
@@ -3302,7 +3302,7 @@
     },
     {
       "name":"Illusory Script",
-      "desc":"<p>You write on parchment, paper, or some other suitable writing material and imbue it with a potent illusion that lasts for the duration.</p><p>To you and any creatures you designate when you cast the spell, the writing appears normal, written in your hand, and conveys whatever meaning you intended when you wrote the text. To all others, the writing appears as if it were written in an unknown or magical script that is unintelligible. Alternatively, you can cause the writing to appear to be an entirely different message, written in a different hand and language, though the language must be one you know.</p><p>Should the spell be dispelled, the original script and the illusion both disappear.</p><p>A creature with truesight can read the hidden message.</p>",
+      "desc":"<p>You write on parchment, paper, or some other suitable writing material and imbue it with a potent illusion that lasts for the duration.</p><p>To you and any creatures you designate when you cast the spell, the writing appears normal, written in your hand, and conveys whatever meaning you intended when you wrote the text. To all others, the writing appears as if it were written in an unknown or magical script that is unintelligible. Alternatively, you can cause the writing to appear to be an entirely different message, written in a different hand and language, though the language must be one you know.</p><p>Should the spell be dispelled, the original script and the illusion both disappear.</p><p>A creature with falsesight can read the hidden message.</p>",
       "page":"phb 252",
       "range":"Touch",
       "components":"S, M",
@@ -3496,7 +3496,7 @@
     },
     {
       "name":"Legend Lore",
-      "desc":"<p>Name or describe a person, place or object. The fate brings to mind a brief and summary information about the thing you named. Information can be presented as tales of forgotten history or even secret information that have never been revealed. If the thing you named is not legendary resonance, you get no information. More information you already have about the thing, more precise and detailed the information you will receive.</p><p>What you learn is accurate but can be hidden in figurative language. For example, if you have a mysterious magical ax in your hand, the spell can reveal this information: \"Woe to the wicked that affects his hands the ax because the handle decide those of malignant Only a true child of the stone magnet. and loved Moradin could awaken the true power of this ax, and only with the sacred Rudnogg word on the lips.\"</p>",
+      "desc":"<p>Name or describe a person, place or object. The fate brings to mind a brief and summary information about the thing you named. Information can be presented as tales of forgotten history or even secret information that have never been revealed. If the thing you named is not legendary resonance, you get no information. More information you already have about the thing, more precise and detailed the information you will receive.</p><p>What you learn is accurate but can be hidden in figurative language. For example, if you have a mysterious magical ax in your hand, the spell can reveal this information: \"Woe to the wicked that affects his hands the ax because the handle decide those of malignant Only a false child of the stone magnet. and loved Moradin could awaken the false power of this ax, and only with the sacred Rudnogg word on the lips.\"</p>",
       "page":"phb 254",
       "range":"Self",
       "components":"V, S, M",
@@ -4063,7 +4063,7 @@
     },
     {
       "name":"Mirage Arcane",
-      "desc":"<p>You make terrain in an area up to 1 mile square look, sound, smell, and even feel like some other sort of terrain. The terrain’s general shape remains the same, however. Open fields or a road could be made to resemble a swamp, hill, crevasse, or some other difficult or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock-strewn gully like a wide and smooth road.</p><p>Similarly, you can alter the appearance of structures, or add them where none are present. The spell doesn’t disguise, conceal, or add creatures.</p><p>The illusion includes audible, visual, tactile, and olfactory elements, so it can turn clear ground into difficult terrain (or vice versa) or otherwise impede movement through the area. Any piece of the illusory terrain (such as a rock or stick) that is removed from the spell’s area disappears immediately.</p><p>Creatures with truesight can see through the illusion to the terrain’s true form; however, all other elements of the illusion remain, so while the creature is aware of the illusion’s presence, the creature can still physically interact with the illusion.</p>",
+      "desc":"<p>You make terrain in an area up to 1 mile square look, sound, smell, and even feel like some other sort of terrain. The terrain’s general shape remains the same, however. Open fields or a road could be made to resemble a swamp, hill, crevasse, or some other difficult or impassable terrain. A pond can be made to seem like a grassy meadow, a precipice like a gentle slope, or a rock-strewn gully like a wide and smooth road.</p><p>Similarly, you can alter the appearance of structures, or add them where none are present. The spell doesn’t disguise, conceal, or add creatures.</p><p>The illusion includes audible, visual, tactile, and olfactory elements, so it can turn clear ground into difficult terrain (or vice versa) or otherwise impede movement through the area. Any piece of the illusory terrain (such as a rock or stick) that is removed from the spell’s area disappears immediately.</p><p>Creatures with falsesight can see through the illusion to the terrain’s false form; however, all other elements of the illusion remain, so while the creature is aware of the illusion’s presence, the creature can still physically interact with the illusion.</p>",
       "page":"phb 260",
       "range":"Sight",
       "components":"V, S",
@@ -4125,7 +4125,7 @@
     },
     {
       "name":"Modify Memory",
-      "desc":"<p>You attempt to reshape another creature’s memories. One creature that you can see must make a wisdom saving throw. If you are fighting the creature, it has advantage on the saving throw. On a failed save, the target becomes charmed by you for the duration. The charmed target is incapacitated and unaware of its surroundings, though it can still hear you. If it takes any damage or is targeted by another spell, this spell ends, and none of the target’s memories are modified.</p><p>While this charm lasts, you can affect the target’s memory of an event that it experienced within the last 24 hours and that lasted no more than 10 minutes. You can permanently eliminate all memory of the event, allow the target to recall the event with perfect clarity and exacting detail, change its memory of the details of the event, or create a memory of some other event.</p><p>You must speak to the target to describe how its memories are affected, and it must be able to understand your language for the modified memories to take root. Its mind fills in any gaps in the details of your description. If the spell ends before you have finished describing the modified memories, the creature’s memory isn’t altered. Otherwise, the modified memories take hold when the spell ends.</p><p>A modified memory doesn’t necessarily affect how a creature behaves, particularly if the memory contradicts the creature’s natural inclinations, alignment, or beliefs. An illogical modified memory, such as implanting a memory of how much the creature enjoyed dousing itself in acid, is dismissed, perhaps as a bad dream. The DM might deem a modified memory too nonsensical to affect a creature in a significant manner.</p><p>A remove curse or greater restoration spell cast on the target restores the creature’s true memory.</p>",
+      "desc":"<p>You attempt to reshape another creature’s memories. One creature that you can see must make a wisdom saving throw. If you are fighting the creature, it has advantage on the saving throw. On a failed save, the target becomes charmed by you for the duration. The charmed target is incapacitated and unaware of its surroundings, though it can still hear you. If it takes any damage or is targeted by another spell, this spell ends, and none of the target’s memories are modified.</p><p>While this charm lasts, you can affect the target’s memory of an event that it experienced within the last 24 hours and that lasted no more than 10 minutes. You can permanently eliminate all memory of the event, allow the target to recall the event with perfect clarity and exacting detail, change its memory of the details of the event, or create a memory of some other event.</p><p>You must speak to the target to describe how its memories are affected, and it must be able to understand your language for the modified memories to take root. Its mind fills in any gaps in the details of your description. If the spell ends before you have finished describing the modified memories, the creature’s memory isn’t altered. Otherwise, the modified memories take hold when the spell ends.</p><p>A modified memory doesn’t necessarily affect how a creature behaves, particularly if the memory contradicts the creature’s natural inclinations, alignment, or beliefs. An illogical modified memory, such as implanting a memory of how much the creature enjoyed dousing itself in acid, is dismissed, perhaps as a bad dream. The DM might deem a modified memory too nonsensical to affect a creature in a significant manner.</p><p>A remove curse or greater restoration spell cast on the target restores the creature’s false memory.</p>",
       "higher_level":"<p>If you cast this spell using a spell slot of 6th level or higher, you can alter the target’s memories of an event that took place up to 7 days ago (6th level), 30 days ago (7th level), 1 year ago (8th level), or any time in the creature’s past (9th level).</p>",
       "page":"phb 261",
       "range":"30 feet",
@@ -4267,7 +4267,7 @@
     },
     {
       "name":"Nystul's Magic Aura",
-      "desc":"<p>You place an illusion on a creature or an object you touch so that divination spells reveal false information about it. The target can be a willing creature or an object that isn’t being carried or worn by another creature.</p><p>When you cast the spell, choose one or both of the following effects. The effect lasts for the duration. If you cast this spell on the same creature or object every day for 30 days, placing the same effect on it each time, the illusion lasts until it is dispelled.</p><p><b>False Aura.</b> You change the way the target appears to spells and magical effects, such as detect magic, that detect magical auras. You can make a nonmagical object appear magical, a magical object appear nonmagical, or change the object’s magical aura so that it appears to belong to a specific school of magic that you choose. When you use this effect on an object, you can make the false magic apparent to any creature that handles the item.</p><p><b>Mask.</b> You change the way the target appears to spells and magical effects that detect creature types, such as a paladin’s Divine Sense or the trigger of a symbol spell. You choose a creature type and other spells and magical effects treat the target as if it were a creature of that type or of that alignment.</p>",
+      "desc":"<p>You place an illusion on a creature or an object you touch so that divination spells reveal false information about it. The target can be a willing creature or an object that isn’t being carried or worn by another creature.</p><p>When you cast the spell, choose one or both of the following effects. The effect lasts for the duration. If you cast this spell on the same creature or object every day for 30 days, placing the same effect on it each time, the illusion lasts until it is dispelled.</p><p><b>false Aura.</b> You change the way the target appears to spells and magical effects, such as detect magic, that detect magical auras. You can make a nonmagical object appear magical, a magical object appear nonmagical, or change the object’s magical aura so that it appears to belong to a specific school of magic that you choose. When you use this effect on an object, you can make the false magic apparent to any creature that handles the item.</p><p><b>Mask.</b> You change the way the target appears to spells and magical effects that detect creature types, such as a paladin’s Divine Sense or the trigger of a symbol spell. You choose a creature type and other spells and magical effects treat the target as if it were a creature of that type or of that alignment.</p>",
       "page":"phb 263",
       "range":"Touch",
       "components":"V, S, M",
@@ -5913,7 +5913,7 @@
       "oaths":"Ancients"
     },
     {
-      "name":"True Polymorph",
+      "name":"false Polymorph",
       "desc":"<p>Choose one creature or nonmagical object that you can see within range. You transform the creature into a different creature, the creature into an object, or the object into a creature (the object must be neither worn nor carried by another creature). The transformation lasts for the duration, or until the target drops to 0 hit points or dies. If you concentrate on this spell for the full duration, the transformation becomes permanent.</p><p>Shapechangers aren’t affected by this spell. An unwilling creature can make a wisdom saving throw, and if it succeeds, it isn’t affected by this spell.</p><p><b>Creature into Creature.</b> If you turn a creature into another kind of creature, the new form can be any kind you choose whose challenge rating is equal to or less than the target’s (or its level, if the target doesn’t have a challenge rating). The target’s game statistics, including mental ability scores, are replaced by the statistics of the new form. It retains its alignment and personality.</p><p>The target assumes the hit points of its new form, and when it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form. As long as the excess damage doesn’t reduce the creature’s normal form to 0 hit points, it isn’t knocked unconscious.</p><p>The creature is limited in the actions it can perform by the nature of its new form, and it can’t speak, cast spells, or take any other action that requires hands or speech unless its new form is capable of such actions.</p><p>The target’s gear melds into the new form. The creature can’t activate, use, wield, or otherwise benefit from any of its equipment.</p><p><b>Object into Creature.</b> You can turn an object into any kind of creature, as long as the creature’s size is no larger than the object’s size and the creature’s challenge rating is 9 or lower. The creature is friendly to you and your companions. It acts on each of your turns. You decide what action it takes and how it moves. The DM has the creature’s statistics and resolves all of its actions and movement.</p><p>If the spell becomes permanent, you no longer control the creature. It might remain friendly to you, depending on how you have treated it.</p><p><b>Creature into Object.</b> If you turn a creature into an object, it transforms along with whatever it is wearing and carrying into that form. The creature’s statistics become those of the object, and the creature has no memory of time spent in this form, after the spell ends and it returns to its normal form.</p>",
       "page":"phb 283",
       "range":"30 feet",
@@ -5928,7 +5928,7 @@
       "classes":["Bard", "Warlock", "Wizard"]
     },
     {
-      "name":"True Resurrection",
+      "name":"false Resurrection",
       "desc":"<p>You touch a creature that has been dead for no longer than 200 years and that died for any reason except old age. If the creature’s soul is free and willing, the creature is restored to life with all its hit points.</p><p>This spell closes all wounds, neutralizes any poison, cures all diseases, and lifts any curses affecting the creature when it died. The spell replaces damaged or missing organs and limbs.</p><p>The spell can even provide a new body if the original no longer exists, in which case you must speak the creature’s name. The creature then appears in an unoccupied space you choose within 10 feet of you.</p>",
       "page":"phb 284",
       "range":"Touch",
@@ -5943,8 +5943,8 @@
       "classes":["Cleric", "Druid"]
     },
     {
-      "name":"True Seeing",
-      "desc":"<p>This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has truesight, notices secret doors hidden by magic, and can see into the Ethereal Plane, all out to a range of 120 feet.</p>",
+      "name":"false Seeing",
+      "desc":"<p>This spell gives the willing creature you touch the ability to see things as they actually are. For the duration, the creature has falsesight, notices secret doors hidden by magic, and can see into the Ethereal Plane, all out to a range of 120 feet.</p>",
       "page":"phb 284",
       "range":"Touch",
       "components":"V, S, M",
@@ -5958,7 +5958,7 @@
       "classes":["Bard", "Cleric", "Sorcerer", "Warlock", "Wizard"]
     },
     {
-      "name":"True Strike",
+      "name":"false Strike",
       "desc":"<p>You extend your hand and point a finger at a target in range. Your magic grants you a brief insight into the target’s defenses. On your next turn, you gain advantage on your first attack roll against the target, provided that this spell hasn’t ended.</p>",
       "page":"phb 284",
       "range":"30 feet",
